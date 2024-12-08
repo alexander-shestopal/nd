@@ -21,9 +21,9 @@ class TodoController extends Controller
 
     public function index(): JsonResponse
     {
-        $todos = Todo::all();
+        $todos = Todo::paginate(5);
         return response()->json([
-            'message' => 'Todos list',
+            'message' => 'Paginated Todos list',
             'data' => $todos
         ]);
     }
