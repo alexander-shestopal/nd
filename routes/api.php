@@ -22,7 +22,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/user', [AuthController::class, 'user']);
 });
 
-Route::prefix('todos')->group(function () {
+Route::middleware('auth:sanctum')->prefix('todos')->group(function () {
     Route::post('/', [TodoController::class, 'store']);
     Route::get('/', [TodoController::class, 'index']);
     Route::get('/{id}', [TodoController::class, 'show']);
